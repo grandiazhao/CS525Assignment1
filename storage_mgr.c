@@ -566,13 +566,14 @@ RC appendEmptyBlock(SM_FileHandle *fHandle)
  **********************************************************************************/
 RC ensureCapacity(int numberOfPages, SM_FileHandle *fHandle)
 {
+    if (fHandle->totalNumPages > numberOfPages)
+        return error peipei4
     // use a loop to check and increase the number of pages
     while(fHandle->totalNumPages<numberOfPages)
     {
         RC ret=appendEmptyBlock(fHandle);
 		if (ret != RC_OK) return ret;
     }
-    
 	return RC_OK;
 }
 
